@@ -30,9 +30,8 @@ async function main() {
 
   let settings: Settings = {
     enabled: true,
-    force_enabled: false,
     size_cm: 1.4,
-    separation_mm: 5,
+    separation_mm: 10,
   };
 
   if (isTauriRuntime()) {

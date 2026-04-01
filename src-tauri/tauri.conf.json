@@ -2,7 +2,7 @@
   "build": {
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build",
-    "devPath": "http://localhost:5173",
+    "devPath": "http://localhost:5299",
     "distDir": "../dist"
   },
   "package": {
@@ -26,10 +26,24 @@
     "security": {
       "csp": null
     },
+    "allowlist": {
+      "all": true
+    },
+    "systemTray": {
+      "iconPath": "icons/icon.ico",
+      "iconAsTemplate": true
+    },
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "fi.aalto.breakgrogu"
+      "identifier": "fi.aalto.breakgrogu",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ]
     }
   }
 }

@@ -1,0 +1,5 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- A green bean shape representing Grogu's head/face color -->
+  <rect width="1024" height="1024" fill="transparent" />
+  <path d="M512 256 C 250 256, 200 450, 200 512 C 200 650, 300 768, 512 768 C 724 768, 824 650, 824 512 C 824 450, 774 256, 512 256" fill="#7dbf7d" />
+</svg>

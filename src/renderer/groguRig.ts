@@ -17,6 +17,9 @@ export async function createGroguRig(parent: Container): Promise<GroguRig> {
 
 class PlaceholderGroguRig implements GroguRig {
   container = new Container();
+  // Separate motion layer so `BehaviorController` can position `container`
+  // without clobbering internal bob offsets.
+  private motion = new Container();
   // Placeholder rig draws head+face separately from the torso so we can
   // change "body height" without scaling head/ears.
   private torso = new Graphics();
@@ -30,6 +33,7 @@ class PlaceholderGroguRig implements GroguRig {
 
   constructor() {
     this.container.eventMode = "none";
+    this.container.addChild(this.motion);
 
     // Place ears so they attach to the sides of the head.
     // (Torso height is shortened, but head/ears should keep their full scale.)
@@ -37,7 +41,7 @@ class PlaceholderGroguRig implements GroguRig {
     this.leftEar.position.set(-12, -16);
     this.rightEar.position.set(12, -16);
     // Draw torso first, then ears, then head so the head stays visible in front.
-    this.container.addChild(this.torso, this.leftEar, this.rightEar, this.head);
+    this.motion.addChild(this.torso, this.leftEar, this.rightEar, this.head);
 
     // Anchor torso scaling at its bottom so the "shortening" feels stable.
     // The torso roundRect is drawn from y=-14 to y=+12 at scale=1 (see redraw()).
@@ -63,7 +67,8 @@ class PlaceholderGroguRig implements GroguRig {
     // Simple “alive” motion that varies with state.
     const baseBob = this.current === "Sleep" ? 0.6 : 1.0;
     const bob = Math.sin(this.t / 240) * 1.2 * baseBob;
-    this.container.y += (bob - this.container.y) * 0.08;
+    // Apply bob as a local offset to the motion layer.
+    this.motion.y += (bob - this.motion.y) * 0.08;
 
     const earWiggle =
       // Reduced amplitude so ear movement feels subtler.

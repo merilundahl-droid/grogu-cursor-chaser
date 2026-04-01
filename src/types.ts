@@ -1,6 +1,5 @@
 export type Settings = {
   enabled: boolean;
-  force_enabled: boolean;
   size_cm: number;
   separation_mm: number;
 };

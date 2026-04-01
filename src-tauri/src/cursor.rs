@@ -1,6 +1,6 @@
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
-use tauri::{AppHandle, Manager, State};
+use tauri::{AppHandle, Manager};
 
 use crate::AppSettings;
 
@@ -55,8 +55,9 @@ fn get_cursor_pos_and_dpi() -> Option<(i32, i32, i32, i32, u32)> {
   None
 }
 
-pub fn spawn_cursor_emitter(app: AppHandle, settings: State<'_, AppSettings>) {
+pub fn spawn_cursor_emitter(app: AppHandle) {
   std::thread::spawn(move || loop {
+    let settings = app.state::<AppSettings>();
     let s = settings.0.lock().expect("settings mutex poisoned").clone();
     if !s.enabled {
       std::thread::sleep(Duration::from_millis(100));
