@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define GroguIconPath = "$(sys.SOURCEFILEDIR)\icons\icon.ico" ?>
+  
+  <Fragment>
+    <Icon Id="GroguIcon.exe" SourceFile="$(var.GroguIconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="GroguIcon.exe" />
+  </Fragment>
+</Wix>

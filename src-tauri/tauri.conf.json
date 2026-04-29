@@ -6,13 +6,13 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "Break Grogu",
+    "productName": "Grogu cursor chaser",
     "version": "0.1.0"
   },
   "tauri": {
     "windows": [
       {
-        "title": "Break Grogu",
+        "title": "Grogu cursor chaser",
         "width": 320,
         "height": 320,
         "resizable": false,
@@ -31,7 +31,7 @@
     },
     "systemTray": {
       "iconPath": "icons/icon.ico",
-      "iconAsTemplate": true
+      "iconAsTemplate": false
     },
     "bundle": {
       "active": true,
